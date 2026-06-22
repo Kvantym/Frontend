@@ -1,0 +1,48 @@
+﻿<div class="modal-overlay" (click)="onCancel()"></div>
+<div class="modal-container" (click)="$event.stopPropagation()">
+  <h2>{{ 'card.createTitle' | translate }}</h2>
+
+  <form [formGroup]="createCartForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">{{ 'common.name' | translate }}</label>
+      <input id="name" type="text" formControlName="name" [placeholder]="'common.enterName' | translate" />
+    </div>
+
+    <div class="form-group">
+      <label for="description">{{ 'common.description' | translate }}</label>
+      <textarea id="description" formControlName="description" [placeholder]="'card.enterDescription' | translate"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="dueDate">{{ 'common.dueDate' | translate }}</label>
+      <input id="dueDate" type="datetime-local" formControlName="dueDate" />
+    </div>
+
+    <div class="form-group">
+      <label for="priorityNote">{{ 'common.priority' | translate }}</label>
+      <select id="priorityNote" formControlName="priorityNote">
+        <option value="0">{{ 'priority.0' | translate }}</option>
+        <option value="1">{{ 'priority.1' | translate }}</option>
+        <option value="2">{{ 'priority.2' | translate }}</option>
+         <option value="3">{{ 'priority.3' | translate }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="statusNote">{{ 'common.status' | translate }}</label>
+      <select id="statusNote" formControlName="statusNote">
+        <option value="0">{{ 'status.0' | translate }}</option>
+        <option value="1">{{ 'status.1' | translate }}</option>
+        <option value="2">{{ 'status.2' | translate }}</option>
+      </select>
+    </div>
+
+    <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+    <div class="actions">
+      <button type="button" class="buttonCancel" (click)="onCancel()">{{ 'common.cancel' | translate }}</button>
+      <button type="submit" class="buttonCreate" [disabled]="createCartForm.invalid">{{ 'common.create' | translate }}</button>
+
+    </div>
+  </form>
+</div>

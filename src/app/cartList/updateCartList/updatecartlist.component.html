@@ -1,0 +1,34 @@
+﻿<div class="modal-overlay" (click)="onCancel()"></div>
+
+<div class="modal-container">
+  <h2>{{ 'list.editTitle' | translate }}</h2>
+
+  <form [formGroup]="updateCartListForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">{{ 'list.name' | translate }}</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        [placeholder]="'common.enterName' | translate" />
+
+      <div class="error" *ngIf="updateCartListForm.get('name')?.touched && updateCartListForm.get('name')?.invalid">
+        {{ 'common.requiredName' | translate }}
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="button" class="buttonCancel" (click)="onCancel()">
+        {{ 'common.cancel' | translate }}
+      </button>
+      <button type="submit" class="buttonCreate" [disabled]="!updateCartListForm.valid">
+        {{ 'common.save' | translate }}
+      </button>
+
+    </div>
+
+    <div class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

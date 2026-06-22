@@ -1,0 +1,4 @@
+{
+  "files.trimTrailingWhitespaceInRegexAndStrings": true,
+  "editor.formatOnSave": true
+}

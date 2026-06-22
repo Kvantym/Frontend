@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1100" viewBox="0 0 1700 1100">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .page { fill: #ffffff; stroke: #dbe4ef; stroke-width: 2; }
+      .title { font: 700 34px Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .subtitle { font: 500 17px Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2.4; }
+      .panel-head-back { fill: #ecfdf5; stroke: #16a34a; stroke-width: 2.4; }
+      .panel-head-front { fill: #eff6ff; stroke: #2563eb; stroke-width: 2.4; }
+      .panel-title { font: 700 26px Arial, sans-serif; fill: #0f172a; text-anchor: middle; dominant-baseline: middle; }
+      .module { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.8; }
+      .backend { fill: #f0fdf4; stroke: #16a34a; }
+      .frontend { fill: #eff6ff; stroke: #2563eb; }
+      .state { fill: #f5f3ff; stroke: #7c3aed; }
+      .test { fill: #fff7ed; stroke: #ea580c; }
+      .module-title { font: 700 19px Arial, sans-serif; fill: #1e293b; text-anchor: middle; }
+      .module-text { font: 500 15px Arial, sans-serif; fill: #475569; text-anchor: middle; }
+      .arrow { stroke: #475569; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #64748b; stroke-width: 2.2; stroke-dasharray: 8 6; fill: none; marker-end: url(#arrow); }
+      .label { font: 700 15px Arial, sans-serif; fill: #475569; text-anchor: middle; }
+      .legend { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.6; }
+      .legend-text { font: 500 15px Arial, sans-serif; fill: #475569; dominant-baseline: middle; }
+    </style>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L11,6.5 L2,11" fill="none" stroke="#475569" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1700" height="1100"/>
+  <rect class="page" x="55" y="40" width="1590" height="1015" rx="24"/>
+
+  <text class="title" x="850" y="92">Структура програмного проєкту</text>
+  <text class="subtitle" x="850" y="123">Backend- та frontend-частини системи управління завданнями</text>
+
+  <!-- Backend panel -->
+  <rect class="panel" x="105" y="170" width="710" height="785" rx="22"/>
+  <rect class="panel-head-back" x="105" y="170" width="710" height="70" rx="22"/>
+  <text class="panel-title" x="460" y="205">Backend-частина</text>
+
+  <rect class="module backend" x="165" y="285" width="260" height="95" rx="16"/>
+  <text class="module-title" x="295" y="318">API</text>
+  <text class="module-text" x="295" y="344">контролери, Swagger,</text>
+  <text class="module-text" x="295" y="365">авторизація, запуск</text>
+
+  <rect class="module backend" x="495" y="285" width="260" height="95" rx="16"/>
+  <text class="module-title" x="625" y="318">Domain</text>
+  <text class="module-text" x="625" y="344">сутності, DTO,</text>
+  <text class="module-text" x="625" y="365">запити, enum-и</text>
+
+  <rect class="module backend" x="165" y="430" width="260" height="95" rx="16"/>
+  <text class="module-title" x="295" y="463">Services</text>
+  <text class="module-text" x="295" y="489">бізнес-логіка</text>
+  <text class="module-text" x="295" y="510">та правила системи</text>
+
+  <rect class="module backend" x="495" y="430" width="260" height="95" rx="16"/>
+  <text class="module-title" x="625" y="463">Repositories</text>
+  <text class="module-text" x="625" y="489">репозиторії для</text>
+  <text class="module-text" x="625" y="510">роботи з даними</text>
+
+  <rect class="module backend" x="165" y="575" width="260" height="95" rx="16"/>
+  <text class="module-title" x="295" y="608">Data</text>
+  <text class="module-text" x="295" y="634">DbContext</text>
+  <text class="module-text" x="295" y="655">та міграції</text>
+
+  <rect class="module test" x="495" y="575" width="260" height="95" rx="16"/>
+  <text class="module-title" x="625" y="608">IntegrationTests</text>
+  <text class="module-text" x="625" y="634">інтеграційне</text>
+  <text class="module-text" x="625" y="655">тестування системи</text>
+
+  <rect class="module backend" x="330" y="730" width="260" height="95" rx="16"/>
+  <text class="module-title" x="460" y="763">Database</text>
+  <text class="module-text" x="460" y="789">збереження дошок,</text>
+  <text class="module-text" x="460" y="810">списків, карток</text>
+
+  <!-- Backend arrows -->
+  <line class="arrow" x1="425" y1="332" x2="495" y2="332"/>
+  <line class="arrow" x1="295" y1="380" x2="295" y2="430"/>
+  <line class="arrow" x1="425" y1="478" x2="495" y2="478"/>
+  <line class="arrow" x1="625" y1="525" x2="625" y2="575"/>
+  <polyline class="arrow" points="495,622 460,622 460,730"/>
+  <line class="dash" x1="625" y1="670" x2="625" y2="720"/>
+  <text class="label" x="660" y="704">перевірка</text>
+
+  <!-- Frontend panel -->
+  <rect class="panel" x="885" y="170" width="710" height="785" rx="22"/>
+  <rect class="panel-head-front" x="885" y="170" width="710" height="70" rx="22"/>
+  <text class="panel-title" x="1240" y="205">Frontend-частина</text>
+
+  <rect class="module frontend" x="945" y="285" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1075" y="316">Авторизація</text>
+  <text class="module-text" x="1075" y="343">login / register</text>
+
+  <rect class="module frontend" x="1275" y="285" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1405" y="316">Профіль</text>
+  <text class="module-text" x="1405" y="343">дані користувача</text>
+
+  <rect class="module frontend" x="945" y="415" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1075" y="446">Дошки</text>
+  <text class="module-text" x="1075" y="473">створення, перегляд</text>
+
+  <rect class="module frontend" x="1275" y="415" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1405" y="446">Списки</text>
+  <text class="module-text" x="1405" y="473">робота зі списками</text>
+
+  <rect class="module frontend" x="945" y="545" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1075" y="576">Картки</text>
+  <text class="module-text" x="1075" y="603">задачі та нотатки</text>
+
+  <rect class="module frontend" x="1275" y="545" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1405" y="576">Архіви</text>
+  <text class="module-text" x="1405" y="603">архівовані елементи</text>
+
+  <rect class="module frontend" x="945" y="675" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1075" y="706">AI-чат</text>
+  <text class="module-text" x="1075" y="733">запити до AI</text>
+
+  <rect class="module frontend" x="1275" y="675" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1405" y="706">API-сервіси</text>
+  <text class="module-text" x="1405" y="733">HTTP-запити до backend</text>
+
+  <rect class="module state" x="1110" y="815" width="260" height="85" rx="16"/>
+  <text class="module-title" x="1240" y="846">NgRx</text>
+  <text class="module-text" x="1240" y="873">стан дошок і списків</text>
+
+  <!-- Frontend arrows -->
+  <line class="arrow" x1="1075" y1="370" x2="1075" y2="415"/>
+  <line class="arrow" x1="1205" y1="458" x2="1275" y2="458"/>
+  <line class="arrow" x1="1405" y1="500" x2="1405" y2="545"/>
+  <line class="arrow" x1="1275" y1="588" x2="1205" y2="588"/>
+  <line class="arrow" x1="1075" y1="630" x2="1075" y2="675"/>
+  <line class="arrow" x1="1205" y1="718" x2="1275" y2="718"/>
+  <line class="dash" x1="1405" y1="760" x2="1285" y2="815"/>
+  <line class="dash" x1="1075" y1="760" x2="1195" y2="815"/>
+
+  <!-- Cross app arrows -->
+  <path class="arrow" d="M1275 718 C1030 718, 1020 332, 755 332"/>
+  <text class="label" x="995" y="585">HTTP / REST API</text>
+  <path class="dash" d="M165 332 C-5 332, -5 910, 1110 857"/>
+  <text class="label" x="590" y="930">отримані дані оновлюють стан інтерфейсу</text>
+
+  <!-- Legend -->
+  <rect class="legend" x="165" y="995" width="830" height="44" rx="12"/>
+  <circle cx="198" cy="1017" r="9" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <text class="legend-text" x="216" y="1017">backend-проєкти</text>
+  <circle cx="400" cy="1017" r="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="legend-text" x="418" y="1017">frontend-модулі</text>
+  <circle cx="610" cy="1017" r="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text class="legend-text" x="628" y="1017">керування станом</text>
+  <circle cx="825" cy="1017" r="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text class="legend-text" x="843" y="1017">тести</text>
+</svg>

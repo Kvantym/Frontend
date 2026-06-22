@@ -1,0 +1,170 @@
+﻿<div class="board-container" *ngIf="board$ | async as board">
+  <div class="board-header">
+    <h2>{{ board.name }}</h2>
+
+    <button class="btn-archive" (click)="goToArchiveCartList()">
+      {{ 'board.archiveLists' | translate }}
+    </button>
+    <button class="btn add-list" (click)="addList()">{{ 'board.addList' | translate }}</button>
+  </div>
+  <div class="search-container">
+    <input
+      type="text"
+      #searchInput
+      (input)="searchListCart(searchInput.value, board.id, false)"
+      [placeholder]="'common.searchLists' | translate"
+    />
+  </div>
+
+<div class="lists-wrapper" *ngIf="lists$ | async as lists" >
+  <div class="list-card" *ngFor="let list of (searchListCartsResults[boardId] || lists)" (click)="openShowListCarForm(list.id); $event.stopPropagation()">
+    <div class="search-container">
+      <input
+        (click)="$event.stopPropagation()"
+        type="text"
+        #searchInput
+        (input)="searchCart(list.id, false, searchInput.value)"
+        [placeholder]="'common.searchCards' | translate"
+      />
+      <select #prioritySelect (click)="$event.stopPropagation()" (change)="searchCart(list.id, false, undefined, prioritySelect.value)">
+        <option [value]="null">{{ 'common.priority' | translate }}</option>
+        <option value="0">{{ 'priority.0' | translate }}</option>
+        <option value="1">{{ 'priority.1' | translate }}</option>
+        <option value="2">{{ 'priority.2' | translate }}</option>
+        <option value="3">{{ 'priority.3' | translate }}</option>
+      </select>
+
+      <select #statusSelect (click)="$event.stopPropagation()" (change)="searchCart(list.id, false, undefined, undefined, statusSelect.value)">
+        <option [value]="null">{{ 'common.status' | translate }}</option>
+        <option value="0">{{ 'status.0' | translate }}</option>
+        <option value="1">{{ 'status.1' | translate }}</option>
+        <option value="2">{{ 'status.2' | translate }}</option>
+      </select>
+      <div class="date-wrapper">
+        <label>{{ 'common.dueDate' | translate }}:</label>
+        <div class="input-with-clear">
+          <input
+            #dateInput
+            type="date"
+            (click)="$event.stopPropagation()"
+            (change)="searchCart(list.id, true, undefined, undefined, undefined, dateInput.value)"
+          />
+
+          <button
+            *ngIf="dateInput.value"
+            class="btn-delete-date"
+            (click)="$event.stopPropagation(); dateInput.value = ''; searchCart(list.id, true, undefined, undefined, undefined, null)"
+            [title]="'common.clearDate' | translate">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <button class="btn-archive" (click)="addListCartToArchive(list.id); $event.stopPropagation()">
+      {{ 'common.archive' | translate }}
+    </button>
+      <div class="list-header">
+        <h3 [title]="list.name">{{ list.name | slice:0:25 }}{{ list.name.length > 25 ? '...' : '' }}</h3>
+
+        <div class="list-actions">
+
+          <button class="btn icon add-card" (click)="addCard(list.id); $event.stopPropagation()" [title]="'card.createTitle' | translate">
+
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 5v14" />
+    <path d="M5 12h14" />
+  </svg>
+</button>
+
+        </div>
+      </div>
+
+
+
+ <div class="cards-wrapper">
+      <div class="card-item" *ngFor="let card of (searchCartsResults[list.id] || list.carts)">
+        <div class="card-info" [title]="card.name" (click)="openShowCarForm(card.id); $event.stopPropagation()">
+          <strong>{{ card.name | slice:0:25 }}{{ card.name.length > 25 ? '...' : '' }}</strong>
+          <p>{{ 'common.description' | translate }}: {{ card.description | slice:0:50 }}{{ card.description.length > 50 ? '...' : '' }}</p>
+          <p>{{ 'common.priority' | translate }}: {{card.priorityNote | enumLabel:'priority'}}</p>
+          <p>{{ 'common.status' | translate }}: {{card.statusNote | enumLabel:'status'}}</p>
+          <p>{{ 'common.dueDate' | translate }}: {{ card.dueDate | date:'dd.MM.yyyy HH:mm' }}</p>
+
+        </div>
+
+
+<div class="move-cart-container" *ngIf="lists && lists.length">
+  <label for="moveCartSelect">{{ 'card.moveToList' | translate }}</label>
+  <select id="moveCartSelect"
+          [(ngModel)]="selectedCartListIds[card.id]"
+          (click)="$event.stopPropagation()"
+          (change)="moveCartToCartList(card.id)">
+    <option
+      *ngFor="let listOption of lists"
+      [value]="listOption.id"
+      [disabled]="listOption.id === list.id">
+      {{ listOption.name | slice:0:25 }}{{ listOption.name.length > 25 ? '...' : '' }}
+    </option>
+  </select>
+  <button class="btn-archive" (click)="addCartToArchive(card.id); $event.stopPropagation()">
+    {{ 'common.archive' | translate }}
+  </button>
+
+</div>
+
+
+  </div>
+   <button class="btn-archive" (click)="goToCartArchive(list.id); $event.stopPropagation()">
+     {{ 'board.archiveCards' | translate }}
+   </button>
+
+</div>
+  </div>
+</div>
+
+<div *ngIf="loading$ | async" class="loading">
+  <p>{{ 'board.loading' | translate }}</p>
+</div>
+
+<div *ngIf="isCreateCartListOpen" class="modal-overlay">
+  <app-cartList-createCartList
+    [boardId]="boardId"
+    (closeModal)="closeCreateCartListModal()"
+        (closeModal)="storeLoad()"
+    (cartListCreated)="storeLoad()"
+
+>
+  </app-cartList-createCartList>
+</div>
+
+<div *ngIf="isCreateCartOpen" class="modal-overlay">
+  <app-createCart-createCart
+    [cartListId]="cartListId"
+    (closeModal)="closeCreateCartModal()"
+    (cartCreated)="storeLoad()">
+  </app-createCart-createCart>
+</div>
+<div *ngIf="showCartModalOpen" class="modal-overlay" (click)="closeShowCartModal()">
+  <app-cart-showCart
+    [cartId]="showCartId"
+    [currentUserId] = "currentUserId"
+    (closeModal)="closeShowCartModal()"
+    (click)="$event.stopPropagation()"
+>
+  </app-cart-showCart>
+</div>
+<div *ngIf="showCartListModalOpen" class="modal-overlay" (click)="closeShowListCartModal()">
+  <app-cartList-showcartlist
+        [cartListId]="showCartListId"
+    (closeModal)="closeShowListCartModal()"
+    (click)="$event.stopPropagation()"
+    (closeModal)="storeLoad()"
+    (cartListUpdated)="storeLoad()"
+>
+  </app-cartList-showcartlist>
+</div>
+
+

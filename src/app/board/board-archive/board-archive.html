@@ -1,0 +1,31 @@
+﻿<div class="search-container">
+  <input
+    type="text"
+    #searchInput
+    (input)="searchBoardByName(searchInput.value, true)"
+    [placeholder]="'common.searchBoards' | translate"
+  />
+</div>
+
+<div class="boards-list grid-container">
+  <div class="board-card" *ngFor="let board of boards" (click)="openShowBoardInformation(board.id); $event.stopPropagation()">
+    <h3>{{ board.name }}</h3>
+    <p>{{ 'common.created' | translate }}: {{ board.createdAt | date }}</p>
+
+    <div class="board-actions">
+    </div>
+
+    <button class="open-board-btn" (click)="openBoard(board); $event.stopPropagation()">{{ 'common.open' | translate }}</button>
+  </div>
+</div>
+
+<div *ngIf="showUpdateBoardForm" class="overlay">
+  <app-board-updateboard [board]="selectedBoard" (closeModal)="closeUpdateBoardForm()"></app-board-updateboard>
+</div>
+
+<app-board-showinformitionboard
+  *ngIf="showBoardInfoForm"
+  [boardId]="selectedBoardId!"
+  (closeModal)="closeShowBoardInformation()"
+  (boardUpdated)="onBoardUpdated()"
+></app-board-showinformitionboard>

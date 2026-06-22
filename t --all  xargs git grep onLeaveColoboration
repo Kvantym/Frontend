@@ -1,0 +1,14 @@
+[33m2bf7d2d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature-restored[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33m2bf7d2d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature-restored[m[33m)[m HEAD@{1}: checkout: moving from 02.05.26-add-Coloborant to feature-restored
+[33m916048c[m[33m ([m[1;31morigin/02.05.26-add-Coloborant[m[33m, [m[1;32m02.05.26-add-Coloborant[m[33m)[m HEAD@{2}: commit: Додав можливість додавати і видаляти колоборантів до дошок
+[33m2bf7d2d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfeature-restored[m[33m)[m HEAD@{3}: commit: Додав можливість додавати і видаляти колоборантів до дошок
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{4}: checkout: moving from 02.05.26-add-Coloborant to 02.05.26-add-Coloborant
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{5}: branch: Reset to origin/02.05.26-add-Coloborant
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{6}: checkout: moving from review-02-05-2026-Add-Coloboration to 02.05.26-add-Coloborant
+[33m9674db3[m[33m ([m[1;31morigin/review_02.11[m[33m, [m[1;32mreview-02-05-2026-Add-Coloboration[m[33m)[m HEAD@{7}: checkout: moving from 02.05.26-add-Coloborant to review-02-05-2026-Add-Coloboration
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{8}: checkout: moving from 02.05.26-add-Coloborant to 02.05.26-add-Coloborant
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{9}: branch: Reset to origin/02.05.26-add-Coloborant
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{10}: checkout: moving from 02.05.26-add-Coloborant to 02.05.26-add-Coloborant
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{11}: branch: Reset to origin/02.05.26-add-Coloborant
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{12}: checkout: moving from master to 02.05.26-add-Coloborant
+[33med976e7[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m HEAD@{13}: clone: from https://github.com/Kvantym/MyNotesProjectFront.git

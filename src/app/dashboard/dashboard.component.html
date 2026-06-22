@@ -1,0 +1,65 @@
+﻿<div class="dashboard-header">
+  <h2 class="logo">{{ 'dashboard.boards' | translate }}</h2>
+  <div class="search-container">
+    <input
+      type="text"
+      #searchInput
+      (input)="searchBoard(searchInput.value, false)"
+      [placeholder]="'common.searchBoards' | translate"
+    />
+  </div>
+
+  <div class="header-actions-right">
+    <button class="btn-archive" (click)="goToArchive()">
+      {{ 'common.archive' | translate }}
+    </button>
+    <button class="btn-ai-chat" (click)="openChat()">
+      {{ 'dashboard.aiAssistant' | translate }}
+    </button>
+
+    <button (click)="openCreateBoardForm()" class="create-board-btn">{{ 'dashboard.createBoard' | translate }}</button>
+    <div class="user-section">
+      <div class="user-avatar" (click)="toggleUserMenu()" [title]="userName" [attr.aria-label]="'auth.defaultUser' | translate">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 21a8 8 0 0 0-16 0" />
+          <circle cx="12" cy="8" r="4" />
+        </svg>
+      </div>
+
+      <div
+        class="user-menu"
+        *ngIf="isUserMenuOpen"
+        (mouseenter)="onUserMenuMouseEnter()"
+        (mouseleave)="onUserMenuMouseLeave()"
+      >
+        <button (click)="openProfile()">{{ 'dashboard.profile' | translate }}</button>
+        <button (click)="logout()">{{ 'auth.logout' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isCreateBoardOpen$ | async" class="overlay">
+  <app-board-createboard (closeModal)="closeCreateBoardForm()"></app-board-createboard>
+</div>
+
+<div class="boards-list grid-container">
+  <div class="board-card" *ngFor="let board of boards$ | async" (click)="openShowBoardInformation(board.id); $event.stopPropagation()">
+    <h3>{{ board.name }}</h3>
+    <p>{{ 'common.created' | translate }}: {{ board.createdAt | date }}</p>
+    <div class="board-actions">
+    </div>
+    <button class="open-board-btn" (click)="openBoard(board); $event.stopPropagation()">{{ 'common.open' | translate }}</button>
+  </div>
+</div>
+
+<div *ngIf="showUpdateBoardForm" class="overlay">
+  <app-board-updateboard [board]="selectedBoard" (closeModal)="closeUpdateBoardForm()"></app-board-updateboard>
+</div>
+
+<app-board-showinformitionboard
+  *ngIf="showBoardInfoForm"
+  [boardId]="selectedBoardId!"
+  (closeModal)="closeShowBoardInformation()"
+  (boardUpdated)="closeShowBoardInformation()"
+></app-board-showinformitionboard>

@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1150" viewBox="0 0 1700 1150">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 30px Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .subtitle { font: 500 15px Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+      .class-box { fill: #ffffff; stroke: #2563eb; stroke-width: 2.4; }
+      .class-box-core { fill: #ffffff; stroke: #16a34a; stroke-width: 2.4; }
+      .class-box-activity { fill: #ffffff; stroke: #ea580c; stroke-width: 2.4; }
+      .class-head { fill: #eff6ff; stroke: #2563eb; stroke-width: 2.4; }
+      .class-head-core { fill: #ecfdf5; stroke: #16a34a; stroke-width: 2.4; }
+      .class-head-activity { fill: #fff7ed; stroke: #ea580c; stroke-width: 2.4; }
+      .class-name { font: 700 20px Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .attr { font: 500 15px Consolas, "Courier New", monospace; fill: #1e293b; }
+      .method { font: 500 15px Consolas, "Courier New", monospace; fill: #334155; }
+      .section-line { stroke: #cbd5e1; stroke-width: 1.6; }
+      .rel { stroke: #475569; stroke-width: 2.2; fill: none; }
+      .rel-dash { stroke: #64748b; stroke-width: 2; stroke-dasharray: 8 6; fill: none; }
+      .cardinality { font: 700 16px Arial, sans-serif; fill: #334155; }
+      .rel-label { font: 600 14px Arial, sans-serif; fill: #475569; text-anchor: middle; }
+      .legend { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; }
+      .legend-text { font: 500 14px Arial, sans-serif; fill: #475569; }
+    </style>
+    <marker id="diamond" markerWidth="18" markerHeight="14" refX="2" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,7 L9,2 L16,7 L9,12 Z" fill="#ffffff" stroke="#475569" stroke-width="1.8"/>
+    </marker>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#64748b" stroke-width="1.8"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1700" height="1150"/>
+  <text class="title" x="850" y="55">Діаграма класів системи управління завданнями</text>
+  <text class="subtitle" x="850" y="82">Основні сутності, атрибути та зв’язки предметної області</text>
+
+  <!-- ApplicationUser -->
+  <g transform="translate(80 140)">
+    <rect class="class-box-core" x="0" y="0" width="315" height="245" rx="10"/>
+    <rect class="class-head-core" x="0" y="0" width="315" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="315" y2="48"/>
+    <text class="class-name" x="157.5" y="31">ApplicationUser</text>
+    <text class="attr" x="18" y="76">+ Id: string</text>
+    <text class="attr" x="18" y="101">+ UserName: string</text>
+    <text class="attr" x="18" y="126">+ Email: string</text>
+    <text class="attr" x="18" y="151">+ PasswordHash: string</text>
+    <text class="attr" x="18" y="176">+ Boards: ICollection&lt;Board&gt;</text>
+    <line class="section-line" x1="0" y1="196" x2="315" y2="196"/>
+    <text class="method" x="18" y="224">+ Authenticate()</text>
+  </g>
+
+  <!-- Board -->
+  <g transform="translate(515 125)">
+    <rect class="class-box" x="0" y="0" width="315" height="275" rx="10"/>
+    <rect class="class-head" x="0" y="0" width="315" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="315" y2="48"/>
+    <text class="class-name" x="157.5" y="31">Board</text>
+    <text class="attr" x="18" y="76">+ Id: Guid</text>
+    <text class="attr" x="18" y="101">+ Name: string</text>
+    <text class="attr" x="18" y="126">+ CreatedAt: DateTime</text>
+    <text class="attr" x="18" y="151">+ IsArchive: bool</text>
+    <text class="attr" x="18" y="176">+ UserId: string</text>
+    <text class="attr" x="18" y="201">+ ListCarts: ICollection&lt;ListCart&gt;</text>
+    <line class="section-line" x1="0" y1="221" x2="315" y2="221"/>
+    <text class="method" x="18" y="249">+ Archive()</text>
+  </g>
+
+  <!-- ListCart -->
+  <g transform="translate(955 140)">
+    <rect class="class-box" x="0" y="0" width="315" height="245" rx="10"/>
+    <rect class="class-head" x="0" y="0" width="315" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="315" y2="48"/>
+    <text class="class-name" x="157.5" y="31">ListCart</text>
+    <text class="attr" x="18" y="76">+ Id: Guid</text>
+    <text class="attr" x="18" y="101">+ Name: string</text>
+    <text class="attr" x="18" y="126">+ CreatedAt: DateTime</text>
+    <text class="attr" x="18" y="151">+ IsArchive: bool</text>
+    <text class="attr" x="18" y="176">+ BoardId: Guid</text>
+    <text class="attr" x="18" y="201">+ Carts: ICollection&lt;Cart&gt;</text>
+  </g>
+
+  <!-- Cart -->
+  <g transform="translate(955 505)">
+    <rect class="class-box" x="0" y="0" width="330" height="310" rx="10"/>
+    <rect class="class-head" x="0" y="0" width="330" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="330" y2="48"/>
+    <text class="class-name" x="165" y="31">Cart</text>
+    <text class="attr" x="18" y="76">+ Id: Guid</text>
+    <text class="attr" x="18" y="101">+ Name: string</text>
+    <text class="attr" x="18" y="126">+ Description: string</text>
+    <text class="attr" x="18" y="151">+ DueDate: DateTime?</text>
+    <text class="attr" x="18" y="176">+ PriorityNote: Priority</text>
+    <text class="attr" x="18" y="201">+ StatusNote: Status</text>
+    <text class="attr" x="18" y="226">+ IsArchive: bool</text>
+    <text class="attr" x="18" y="251">+ ListCartId: Guid</text>
+    <line class="section-line" x1="0" y1="271" x2="330" y2="271"/>
+    <text class="method" x="18" y="298">+ MoveToList()</text>
+  </g>
+
+  <!-- Comment -->
+  <g transform="translate(1345 520)">
+    <rect class="class-box" x="0" y="0" width="285" height="230" rx="10"/>
+    <rect class="class-head" x="0" y="0" width="285" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="285" y2="48"/>
+    <text class="class-name" x="142.5" y="31">Comment</text>
+    <text class="attr" x="18" y="76">+ Id: Guid</text>
+    <text class="attr" x="18" y="101">+ Content: string</text>
+    <text class="attr" x="18" y="126">+ CreatedAt: DateTime</text>
+    <text class="attr" x="18" y="151">+ UserId: string</text>
+    <text class="attr" x="18" y="176">+ CartId: Guid</text>
+    <line class="section-line" x1="0" y1="196" x2="285" y2="196"/>
+    <text class="method" x="18" y="220">+ DeleteOwnComment()</text>
+  </g>
+
+  <!-- ActivityBoard -->
+  <g transform="translate(135 735)">
+    <rect class="class-box-activity" x="0" y="0" width="315" height="230" rx="10"/>
+    <rect class="class-head-activity" x="0" y="0" width="315" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="315" y2="48"/>
+    <text class="class-name" x="157.5" y="31">ActivityBoard</text>
+    <text class="attr" x="18" y="76">+ Id: Guid</text>
+    <text class="attr" x="18" y="101">+ Action: string</text>
+    <text class="attr" x="18" y="126">+ ActivityInformation: string</text>
+    <text class="attr" x="18" y="151">+ ActivityTime: DateTime</text>
+    <text class="attr" x="18" y="176">+ BoardId: Guid</text>
+  </g>
+
+  <!-- ActivityListCart -->
+  <g transform="translate(515 735)">
+    <rect class="class-box-activity" x="0" y="0" width="315" height="230" rx="10"/>
+    <rect class="class-head-activity" x="0" y="0" width="315" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="315" y2="48"/>
+    <text class="class-name" x="157.5" y="31">ActivityListCart</text>
+    <text class="attr" x="18" y="76">+ Id: Guid</text>
+    <text class="attr" x="18" y="101">+ Action: string</text>
+    <text class="attr" x="18" y="126">+ ActivityInformation: string</text>
+    <text class="attr" x="18" y="151">+ ActivityTime: DateTime</text>
+    <text class="attr" x="18" y="176">+ ListCartId: Guid</text>
+  </g>
+
+  <!-- ActivityCart -->
+  <g transform="translate(955 890)">
+    <rect class="class-box-activity" x="0" y="0" width="315" height="230" rx="10"/>
+    <rect class="class-head-activity" x="0" y="0" width="315" height="48" rx="10"/>
+    <line class="section-line" x1="0" y1="48" x2="315" y2="48"/>
+    <text class="class-name" x="157.5" y="31">ActivityCart</text>
+    <text class="attr" x="18" y="76">+ Id: Guid</text>
+    <text class="attr" x="18" y="101">+ Action: string</text>
+    <text class="attr" x="18" y="126">+ ActivityInformation: string</text>
+    <text class="attr" x="18" y="151">+ ActivityTime: DateTime</text>
+    <text class="attr" x="18" y="176">+ CartId: Guid</text>
+  </g>
+
+  <!-- Relationships -->
+  <line class="rel" x1="395" y1="245" x2="515" y2="245" marker-start="url(#diamond)"/>
+  <text class="cardinality" x="407" y="230">1</text>
+  <text class="cardinality" x="488" y="230">0..*</text>
+  <text class="rel-label" x="455" y="220">створює</text>
+
+  <line class="rel" x1="830" y1="245" x2="955" y2="245" marker-start="url(#diamond)"/>
+  <text class="cardinality" x="842" y="230">1</text>
+  <text class="cardinality" x="920" y="230">0..*</text>
+  <text class="rel-label" x="892" y="220">містить</text>
+
+  <line class="rel" x1="1112" y1="385" x2="1112" y2="505" marker-start="url(#diamond)"/>
+  <text class="cardinality" x="1124" y="405">1</text>
+  <text class="cardinality" x="1124" y="488">0..*</text>
+  <text class="rel-label" x="1170" y="450">містить</text>
+
+  <line class="rel" x1="1285" y1="635" x2="1345" y2="635" marker-start="url(#diamond)"/>
+  <text class="cardinality" x="1295" y="620">1</text>
+  <text class="cardinality" x="1315" y="620">0..*</text>
+  <text class="rel-label" x="1315" y="665">коментарі</text>
+
+  <polyline class="rel-dash" points="237,385 237,620 292,620 292,735" marker-end="url(#arrow)"/>
+  <text class="cardinality" x="260" y="720">0..*</text>
+  <text class="rel-label" x="315" y="625">фіксує</text>
+
+  <polyline class="rel-dash" points="672,400 672,630 672,735" marker-end="url(#arrow)"/>
+  <text class="cardinality" x="685" y="720">0..*</text>
+  <text class="rel-label" x="720" y="625">фіксує</text>
+
+  <line class="rel-dash" x1="1112" y1="815" x2="1112" y2="890" marker-end="url(#arrow)"/>
+  <text class="cardinality" x="1125" y="870">0..*</text>
+  <text class="rel-label" x="1160" y="855">фіксує</text>
+
+  <polyline class="rel-dash" points="395,265 1490,265 1490,520" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="1515" y="390">залишає</text>
+
+  <!-- Legend -->
+  <rect class="legend" x="95" y="1010" width="735" height="58" rx="10"/>
+  <circle cx="130" cy="1039" r="10" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+  <text class="legend-text" x="150" y="1044">користувач</text>
+  <circle cx="275" cy="1039" r="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="legend-text" x="295" y="1044">основні сутності</text>
+  <circle cx="485" cy="1039" r="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text class="legend-text" x="505" y="1044">записи активності</text>
+  <line class="rel" x1="690" y1="1039" x2="745" y2="1039" marker-start="url(#diamond)"/>
+  <text class="legend-text" x="755" y="1044">агрегація / зв’язок</text>
+</svg>

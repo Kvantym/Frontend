@@ -1,0 +1,35 @@
+﻿<div class="archive-container">
+  <h2>{{ 'card.archivedTitle' | translate }}</h2>
+
+  <div class="cards-wrapper" *ngIf="list && list.length > 0; else empty">
+
+    <div class="card-item" *ngFor="let card of list" (click)="openShowCarForm(card.id); $event.stopPropagation()">
+      <div class="card-info">
+        <strong>{{ card.name }}</strong>
+        <p>{{ 'common.description' | translate }}: {{ card.description | slice:0:50 }}</p>
+        <p>{{ 'common.status' | translate }}: {{ card.statusNote | enumLabel:'status' }}</p>
+        <p>{{ 'common.priority' | translate }}: {{ card.priorityNote | enumLabel:'priority' }}</p>
+        <p>{{ 'common.date' | translate }}: {{ card.dueDate | date:'dd.MM.yyyy HH:mm' }}</p>
+      </div>
+      <button class="btn-archive" (click)="removeCartToArchive(card.id);$event.stopPropagation()">
+        {{ 'common.restoreFromArchive' | translate }}
+      </button>
+
+    </div>
+
+  </div>
+
+  <ng-template #empty>
+    <div class="no-data">
+      <p>{{ 'common.archiveEmpty' | translate }}</p>
+    </div>
+  </ng-template>
+</div>
+
+@if (showCartModalOpen && showCartId) {
+  <app-cart-showCart
+    [cartId]="showCartId"
+    (closeModal)="closeShowCartModal()"
+    (click)="$event.stopPropagation()">
+  </app-cart-showCart>
+}

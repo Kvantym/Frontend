@@ -1,0 +1,76 @@
+﻿<button class="chat-fab" *ngIf="showFab" (click)="toggleChat()" [class.active]="isOpen">
+  <svg *ngIf="!isOpen" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 3a7 7 0 0 0-7 7v3a4 4 0 0 0 4 4h1v-6H7v-1a5 5 0 0 1 10 0v1h-3v6h1a4 4 0 0 0 4-4v-3a7 7 0 0 0-7-7Z" />
+    <path d="M9 21h6" />
+  </svg>
+  <svg *ngIf="isOpen" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M18 6 6 18" />
+    <path d="m6 6 12 12" />
+  </svg>
+</button>
+
+<div class="chat-container" *ngIf="isOpen">
+  <div class="chat-header">
+    <div class="header-content">
+      <div class="status-indicator"></div>
+      <strong>{{ 'chat.assistant' | translate }}</strong>
+    </div>
+  </div>
+
+  <div class="chat-tools">
+    <button
+      type="button"
+      class="project-context-btn"
+      (click)="loadProjectContext()"
+      [disabled]="isProjectContextLoading"
+      [class.active]="projectContextJson"
+    >
+      {{ (projectContextJson ? 'chat.projectContextLoaded' : (isProjectContextLoading ? 'chat.projectContextLoading' : 'chat.askAboutProject')) | translate }}
+    </button>
+  </div>
+
+  <div class="chat-messages" #scrollContainer>
+    <div class="messages-wrapper">
+      <div *ngFor="let msg of messages" [ngClass]="msg.role === 'user' ? 'user-msg' : 'ai-msg'">
+        <div class="bubble">
+          <div class="message-content" [innerHTML]="msg.text | chatMessageFormat"></div>
+
+          <button *ngIf="msg.role === 'ai'"
+                  class="btn-copy"
+                  (click)="copyToClipboard(msg)"
+                  [class.copied]="msg.isCopied">
+            <svg *ngIf="!msg.isCopied" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <svg *ngIf="msg.isCopied" viewBox="0 0 24 24" fill="none" stroke="#00ff88" stroke-width="3">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="isLoading" class="ai-msg">
+        <div class="bubble typing">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-input">
+    <div class="input-wrapper">
+      <input
+        [(ngModel)]="userInput"
+        (keyup.enter)="sendMessage()"
+        [placeholder]="'chat.placeholder' | translate"
+      />
+      <button class="send-btn" (click)="sendMessage()" [disabled]="isLoading || !userInput.trim()" [title]="'common.send' | translate" [attr.aria-label]="'common.send' | translate">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="m22 2-7 20-4-9-9-4Z" />
+          <path d="M22 2 11 13" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

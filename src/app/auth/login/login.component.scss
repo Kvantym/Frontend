@@ -1,0 +1,72 @@
+﻿:host {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-container {
+  width: min(100%, 420px);
+  padding: 30px;
+}
+
+.login-container h2 {
+  margin: 0 0 24px;
+  color: var(--text);
+  font-size: 28px;
+  font-weight: 850;
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.form-group input {
+  min-height: 44px;
+  padding: 0 14px;
+}
+
+button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 16px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--surface);
+}
+
+button:hover {
+  background: var(--accent-hover);
+}
+
+.ButtonRegister {
+  border-color: var(--line-strong);
+  background: var(--surface);
+  color: var(--text-soft);
+}
+
+.ButtonRegister:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  color: var(--accent);
+}
+
+.error,
+.error-message {
+  margin-top: 6px;
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.error-message {
+  padding: 10px;
+  border-radius: var(--radius);
+  background: var(--danger-soft);
+  text-align: center;
+}

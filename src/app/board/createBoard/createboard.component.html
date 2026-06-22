@@ -1,0 +1,19 @@
+﻿<div class="modal-backdrop">
+  <div class="modal">
+    <h2>{{ 'board.createTitle' | translate }}</h2>
+    <form [formGroup]="createBoardForm" (ngSubmit)="onSubmit()">
+      <input type="text" formControlName="name" [placeholder]="'board.name' | translate">
+      <div class="error" *ngIf="createBoardForm.get('name')?.invalid && createBoardForm.get('name')?.touched">
+        {{ 'common.nameMinLength' | translate }}
+      </div>
+
+      <div class="modal-actions">
+        <button class="buttonCancel" type="button" (click)="onCancel()">{{ 'common.cancel' | translate }}</button>
+        <button class="buttonCreate" type="submit">{{ 'common.create' | translate }}</button>
+
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>

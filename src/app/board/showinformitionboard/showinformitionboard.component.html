@@ -1,0 +1,143 @@
+﻿<div class="modal-overlay" *ngIf="showBoardForm"></div>
+
+<div class="modal modal-with-right-column" *ngIf="showBoardForm">
+  <div class="left-column">
+
+<div class="modal-title-wrapper">
+    <h2 class="modal-title">{{ 'board.infoTitle' | translate }}</h2>
+        <div class="modal-actions">
+      <button class="btn icon" (click)="openUpdateBoardForm(selectedBoardData); $event.stopPropagation()" [title]="'common.edit' | translate" [attr.aria-label]="'common.edit' | translate">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+        </svg>
+      </button>
+
+          <button class="btn icon" (click)="deleteBoard(boardId); $event.stopPropagation()" [title]="'common.delete' | translate" [attr.aria-label]="'common.delete' | translate">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M3 6h18" />
+              <path d="M8 6V4h8v2" />
+              <path d="M19 6 18 20H6L5 6" />
+              <path d="M10 11v6" />
+              <path d="M14 11v6" />
+            </svg>
+          </button>
+        </div>
+    </div>
+
+
+    <form [formGroup]="showBoardForm">
+      <div class="form-group">
+        <label for="name">{{ 'common.name' | translate }}</label>
+        <input id="name" type="text" formControlName="name" readonly />
+      </div>
+
+
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <div class="add-collaborator-form">
+        <div class="input-group">
+          <input
+            type="text"
+            [placeholder]="'board.collaboratorPlaceholder' | translate"
+            [(ngModel)]="identifier"
+            [ngModelOptions]="{standalone: true}"
+            class="colab-input"
+          >
+          <button class="btn-add-colab" (click)="addColoborator()" [title]="'common.add' | translate" [attr.aria-label]="'common.add' | translate">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 5v14" />
+              <path d="M5 12h14" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h3>{{ 'board.projectMembers' | translate }}</h3>
+        <div class="scroll-area ">
+
+
+          <div *ngFor="let colab of collaborators" class="colab-card">
+            <div class="colab-actions">
+              <p><strong>{{ 'common.name' | translate }}:</strong> {{colab.userName}}</p>
+              <p><strong>{{ 'common.email' | translate }}:</strong> {{colab.email}}</p>
+            </div>
+
+            <div class="colab-actions">
+              <div *ngIf="board?.userId === currentUserId">
+                <button (click)="onDeleteCollaborator(colab.userName)" class="btn-delete" [title]="'board.deleteMember' | translate">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M17 8h6" />
+                  </svg>
+                </button>
+              </div>
+
+              <div *ngIf="colab.email === currentUserEmail">
+                <button (click)="onLeaveColoboration(colab.userName)" class="btn-delete" [title]="'board.leaveBoard' | translate">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M10 17 15 12 10 7" />
+                    <path d="M15 12H3" />
+                    <path d="M21 19V5" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="actions">
+        <button type="button" class="buttonCancel" (click)="onCancel()">{{ 'common.cancel' | translate }}</button>
+        <div *ngIf="board?.isArchive === false && board.userId ===currentUserId" class="archive-section">
+          <button class="btn-archive" (click)="addToArchiveBoard(this.boardId)">
+            {{ 'board.archiveBoard' | translate }}
+          </button>
+        </div>
+        <div *ngIf="board?.isArchive === true && board.userId ===currentUserId" class="archive-section">
+          <button class="btn-archive" (click)="removeFromArchiveBoard(this.boardId)">
+            {{ 'common.restoreFromArchive' | translate }}
+          </button>
+        </div>
+      </div>
+
+
+
+
+    </form>
+  </div>
+
+<div class="right-column">
+  <h3>{{ 'common.history' | translate }}</h3>
+
+  <div *ngIf="activities.length === 0">
+    <p>{{ 'common.emptyHistory' | translate }}</p>
+  </div>
+
+<ul *ngIf="displayedActivities.length > 0" class="activity-list">
+  <li *ngFor="let activity of displayedActivities" class="activity-item">
+    <span class="activity-time">{{ activity.activityTime | date:'dd/MM/yy, HH:mm' }}</span>
+    <span class="activity-action"><strong>{{ activity.action }}</strong></span>
+    <span class="activity-info">{{ activity.activityInformation }}</span>
+  </li>
+</ul>
+
+<button *ngIf="currentIndex < activities.length" (click)="loadMoreActivities()" class="btn load-more">
+  {{ 'common.loadMore' | translate }}
+</button>
+
+<app-board-updateboard
+  *ngIf="isUpdateBoardModalOpen"
+  [board]="selectedBoard"
+  (closeModal)="closeUpdateBoardModal()"
+  (cartUpdated)="reloadBoard()"
+  (closeModal)="reloadBoard()">
+</app-board-updateboard>
+
+

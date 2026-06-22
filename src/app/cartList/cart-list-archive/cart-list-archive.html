@@ -1,0 +1,105 @@
+﻿<div class="search-container">
+  <input
+    type="text"
+    #searchInput
+    (input)="searchListCart(searchInput.value, boardId, true)"
+    [placeholder]="'common.searchLists' | translate"
+  />
+</div>
+@if (listCarts && listCarts.length > 0) {
+  <div class="lists-wrapper">
+
+    @for (list of (searchListCartsResults[boardId] || listCarts); track list.id) {
+
+      <div class="list-card" (click)="openShowListCarForm(list.id); $event.stopPropagation()">
+        <button class="btn-archive" (click)="removeListCartFromArchive(list.id);$event.stopPropagation()">
+          {{ 'common.restoreFromArchive' | translate }}
+        </button>
+
+        <div class="list-header">
+          <h3 [title]="list.name">{{ list.name | slice:0:25 }}</h3>
+        </div><div class="search-container">
+        <input
+          (click)="$event.stopPropagation()"
+          type="text"
+          #searchInput
+          (input)="searchCart(list.id, true, searchInput.value)"
+          [placeholder]="'common.searchCards' | translate"
+        />
+        <select #prioritySelect (click)="$event.stopPropagation()" (change)="searchCart(list.id, true, undefined, prioritySelect.value)">
+          <option [value]="null">{{ 'common.priority' | translate }}</option>
+          <option value="0">{{ 'priority.0' | translate }}</option>
+          <option value="1">{{ 'priority.1' | translate }}</option>
+          <option value="2">{{ 'priority.2' | translate }}</option>
+          <option value="3">{{ 'priority.3' | translate }}</option>
+        </select>
+
+        <select #statusSelect (click)="$event.stopPropagation()" (change)="searchCart(list.id, true, undefined, undefined, statusSelect.value)">
+          <option [value]="null">{{ 'common.status' | translate }}</option>
+          <option value="0">{{ 'status.0' | translate }}</option>
+          <option value="1">{{ 'status.1' | translate }}</option>
+          <option value="2">{{ 'status.2' | translate }}</option>
+        </select>
+        <div class="date-wrapper">
+          <label>{{ 'common.dueDate' | translate }}:</label>
+          <div class="input-with-clear">
+            <input
+              #dateInput
+              type="date"
+              (click)="$event.stopPropagation()"
+              (change)="searchCart(list.id, true, undefined, undefined, undefined, dateInput.value)"
+            />
+
+            <button
+              *ngIf="dateInput.value"
+              class="btn-delete-date"
+              (click)="$event.stopPropagation(); dateInput.value = ''; searchCart(list.id, true, undefined, undefined, undefined, null)"
+              [title]="'common.clearDate' | translate">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+        <div class="cards-wrapper">
+          <div class="card-item" *ngFor="let card of (searchCartsResults[list.id] || list.carts)">
+            <div class="card-info" [title]="card.name" (click)="openShowCarForm(card.id); $event.stopPropagation()">
+              <strong>{{ card.name | slice:0:25 }}{{ card.name.length > 25 ? '...' : '' }}</strong>
+              <p>{{ 'common.description' | translate }}: {{ card.description | slice:0:50 }}{{ card.description.length > 50 ? '...' : '' }}</p>
+              <p>{{ 'common.priority' | translate }}: {{card.priorityNote | enumLabel:'priority'}}</p>
+              <p>{{ 'common.status' | translate }}: {{card.statusNote | enumLabel:'status'}}</p>
+              <p>{{ 'common.dueDate' | translate }}: {{ card.dueDate | date:'dd.MM.yyyy HH:mm' }}</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    }
+  </div>
+} @else {
+  <div class="no-data">
+    <p>{{ 'board.noArchivedLists' | translate }}</p>
+  </div>
+}
+
+
+<div *ngIf="showCartListModalOpen" class="modal-overlay" (click)="closeShowListCartModal()">
+  <app-cartList-showcartlist
+    [cartListId]="showCartListId"
+    (closeModal)="closeShowListCartModal()"
+    (click)="$event.stopPropagation()"
+  >
+  </app-cartList-showcartlist>
+</div>
+
+@if (showCartModalOpen && showCartId) {
+  <app-cart-showCart
+    [cartId]="showCartId"
+    (closeModal)="closeShowCartModal()"
+    (click)="$event.stopPropagation()">
+  </app-cart-showCart>
+}

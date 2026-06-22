@@ -1,0 +1,88 @@
+﻿.boards-list.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 350px));
+  gap: 24px;
+  padding: 0 25px 30px 25px;
+  justify-content: flex-start;
+}
+
+.board-card {
+  background: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+}
+
+.board-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+  border-color: var(--line);
+}
+
+.board-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+  /* РћР±СЂС–Р·Р°РЅРЅСЏ РґРѕРІРіРѕРіРѕ С‚РµРєСЃС‚Сѓ */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.board-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: auto;
+}
+
+.open-board-btn {
+  width: 100%;
+  background-color: var(--accent);
+  color: var(--surface);
+  border: none;
+  padding: 12px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.open-board-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.open-board-btn:active {
+  transform: scale(0.98);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,111 @@
+﻿.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--surface);
+  padding: 24px;
+  border-radius: var(--radius);
+  width: 400px;
+  max-width: 90%;
+  z-index: 1001;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.form-group {
+  margin-bottom: 15px;
+
+  label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background-color: var(--surface-soft);
+    color: var(--text-soft);
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent);
+      background-color: var(--surface);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    &::placeholder {
+      color: var(--muted-2);
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+
+  .btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+
+    &.save {
+      background: var(--accent);
+      color: white;
+
+      &:hover {
+        background: var(--accent-hover);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    &.cancel {
+      background: #f1f5f9;
+      color: #475569;
+
+      &:hover {
+        background: var(--line);
+        color: var(--text);
+      }
+    }
+  }
+}
+
+.error {
+  color: var(--danger);
+  margin-bottom: 10px;
+  font-size: 13px;
+  background-color: rgba(239, 68, 68, 0.05);
+  padding: 8px;
+  border-radius: 6px;
+  text-align: center;
+}

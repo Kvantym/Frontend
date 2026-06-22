@@ -1,0 +1,97 @@
+﻿<div class="profile-container">
+  <h2>{{ 'profile.title' | translate: { name: userName } }}</h2>
+
+  <div class="language-row">
+    <label for="interfaceLanguage">{{ 'common.interfaceLanguage' | translate }}</label>
+    <select
+      id="interfaceLanguage"
+      [(ngModel)]="selectedLanguage"
+      [ngModelOptions]="{standalone: true}"
+      (ngModelChange)="onLanguageChange($event)"
+    >
+      <option *ngFor="let language of localization.languages" [value]="language.code">
+        {{ language.label }}
+      </option>
+    </select>
+  </div>
+
+  <div class="profile-row" *ngIf="!isEditingUserName; else editUserName">
+    <p><strong>{{ 'common.name' | translate }}:</strong> {{ userName }}</p>
+    <button class="btn edit" (click)="isEditingUserName = true" [title]="'common.edit' | translate" [attr.aria-label]="'common.edit' | translate">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+      </svg>
+    </button>
+  </div>
+
+  <ng-template #editUserName>
+    <form [formGroup]="updateUserNameForm" (ngSubmit)="updateUserName()">
+      <div class="form-group">
+        <label for="name">{{ 'common.newName' | translate }}</label>
+        <input id="name" type="text" formControlName="name" />
+      </div>
+
+      <div class="actions">
+        <button type="button" class="buttonCancel" (click)="onCancelEditName()">{{ 'common.cancel' | translate }}</button>
+        <button type="submit" class="buttonCreate">{{ 'common.save' | translate }}</button>
+
+      </div>
+    </form>
+  </ng-template>
+
+  <div class="profile-row" *ngIf="!isEditingUserEmail; else editUserEmail">
+    <p><strong>{{ 'common.email' | translate }}:</strong> {{ email }}</p>
+    <button class="btn edit" (click)="isEditingUserEmail = true" [title]="'common.edit' | translate" [attr.aria-label]="'common.edit' | translate">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+      </svg>
+    </button>
+  </div>
+
+  <ng-template #editUserEmail>
+    <form [formGroup]="updateUserEmailForm" (ngSubmit)="updateUserEmail()">
+      <div class="form-group">
+        <label for="email">{{ 'common.newEmail' | translate }}</label>
+        <input id="email" type="text" formControlName="email" />
+      </div>
+
+      <div class="actions">
+        <button type="button" class="buttonCancel" (click)="onCancelEditEmail()">{{ 'common.cancel' | translate }}</button>
+        <button type="submit" class="buttonCreate">{{ 'common.save' | translate }}</button>
+
+      </div>
+    </form>
+  </ng-template>
+
+  <div class="profile-row" *ngIf="!isEditingUserPassword; else editUserPassword">
+    <p><strong>{{ 'common.password' | translate }}:</strong></p>
+    <button class="btn edit" (click)="isEditingUserPassword = true" [title]="'common.edit' | translate" [attr.aria-label]="'common.edit' | translate">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
+      </svg>
+    </button>
+  </div>
+
+  <ng-template #editUserPassword>
+    <form [formGroup]="updateUserPasswordForm" (ngSubmit)="updateUserPassword()">
+      <div class="form-group">
+        <label for="password">{{ 'common.newPassword' | translate }}</label>
+        <input id="password" type="password" formControlName="password" />
+      </div>
+
+      <div class="actions">
+        <button type="button" class="buttonCancel" (click)="onCancelEditPassword()">{{ 'common.cancel' | translate }}</button>
+        <button type="submit" class="buttonCreate">{{ 'common.save' | translate }}</button>
+
+      </div>
+    </form>
+  </ng-template>
+
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+</div>

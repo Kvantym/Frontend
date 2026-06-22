@@ -1,0 +1,23 @@
+﻿.home-link nav {
+  padding: 16px clamp(16px, 3vw, 34px) 0;
+}
+
+.home-link a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--text-soft);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 8px 18px rgba(35, 55, 72, 0.08);
+}
+
+.home-link a:hover {
+  border-color: var(--accent);
+  background: var(--surface-hover);
+  color: var(--accent);
+}

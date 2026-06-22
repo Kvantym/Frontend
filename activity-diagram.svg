@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1350" viewBox="0 0 1800 1350">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .page { fill: #ffffff; stroke: #dbe4ef; stroke-width: 2; }
+      .title { font: 700 34px Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .subtitle { font: 500 17px Arial, sans-serif; fill: #64748b; text-anchor: middle; }
+      .lane { fill: #ffffff; stroke: #d7e0ea; stroke-width: 2; }
+      .lane-head { fill: #edf4ff; stroke: #d7e0ea; stroke-width: 2; }
+      .lane-title { font: 700 22px Arial, sans-serif; fill: #1e293b; text-anchor: middle; dominant-baseline: middle; }
+      .action { fill: #eff6ff; stroke: #2563eb; stroke-width: 2.4; }
+      .auth { fill: #ecfdf5; stroke: #16a34a; stroke-width: 2.4; }
+      .task { fill: #fff7ed; stroke: #ea580c; stroke-width: 2.4; }
+      .extra { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2.4; }
+      .decision { fill: #ffffff; stroke: #2563eb; stroke-width: 2.4; }
+      .text { font: 600 18px Arial, sans-serif; fill: #1e293b; text-anchor: middle; dominant-baseline: middle; }
+      .small { font: 700 15px Arial, sans-serif; fill: #475569; text-anchor: middle; }
+      .note { font: 500 15px Arial, sans-serif; fill: #64748b; }
+      .flow { stroke: #475569; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .flow-light { stroke: #64748b; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .start { fill: #0f172a; }
+      .end-outer { fill: #ffffff; stroke: #0f172a; stroke-width: 4; }
+      .end-inner { fill: #0f172a; }
+      .legend { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.6; }
+      .legend-text { font: 500 15px Arial, sans-serif; fill: #475569; dominant-baseline: middle; }
+    </style>
+    <marker id="arrow" markerWidth="13" markerHeight="13" refX="11" refY="6.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L11,6.5 L2,11" fill="none" stroke="#475569" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1800" height="1350"/>
+  <rect class="page" x="55" y="40" width="1690" height="1265" rx="24"/>
+
+  <text class="title" x="900" y="92">Діаграма діяльності користувача</text>
+  <text class="subtitle" x="900" y="123">Типовий сценарій роботи із системою управління завданнями</text>
+
+  <!-- Swimlanes -->
+  <rect class="lane" x="110" y="165" width="1580" height="900" rx="18"/>
+  <line x1="635" y1="165" x2="635" y2="1065" stroke="#d7e0ea" stroke-width="2"/>
+  <line x1="1165" y1="165" x2="1165" y2="1065" stroke="#d7e0ea" stroke-width="2"/>
+
+  <rect class="lane-head" x="110" y="165" width="525" height="62" rx="18"/>
+  <rect class="lane-head" x="635" y="165" width="530" height="62"/>
+  <rect class="lane-head" x="1165" y="165" width="525" height="62" rx="18"/>
+  <text class="lane-title" x="372.5" y="196">Користувач</text>
+  <text class="lane-title" x="900" y="196">Frontend</text>
+  <text class="lane-title" x="1427.5" y="196">Backend / База даних</text>
+
+  <!-- User lane -->
+  <circle class="start" cx="372" cy="278" r="17"/>
+
+  <rect class="action" x="235" y="325" width="275" height="72" rx="18"/>
+  <text class="text" x="372" y="351">Відкриття</text>
+  <text class="text" x="372" y="374">вебзастосунку</text>
+
+  <polygon class="decision" points="372,445 500,520 372,595 244,520"/>
+  <text class="text" x="372" y="509">Користувач</text>
+  <text class="text" x="372" y="532">зареєстрований?</text>
+
+  <rect class="auth" x="235" y="650" width="275" height="72" rx="18"/>
+  <text class="text" x="372" y="676">Реєстрація</text>
+  <text class="text" x="372" y="699">нового користувача</text>
+
+  <rect class="auth" x="235" y="790" width="275" height="72" rx="18"/>
+  <text class="text" x="372" y="816">Вхід у систему</text>
+  <text class="text" x="372" y="839">за логіном і паролем</text>
+
+  <rect class="task" x="235" y="940" width="275" height="72" rx="18"/>
+  <text class="text" x="372" y="966">Створення або</text>
+  <text class="text" x="372" y="989">відкриття дошки</text>
+
+  <!-- Frontend lane -->
+  <rect class="action" x="762" y="325" width="275" height="72" rx="18"/>
+  <text class="text" x="900" y="351">Завантаження</text>
+  <text class="text" x="900" y="374">інтерфейсу</text>
+
+  <rect class="auth" x="762" y="790" width="275" height="72" rx="18"/>
+  <text class="text" x="900" y="816">Надсилання даних</text>
+  <text class="text" x="900" y="839">авторизації</text>
+
+  <rect class="auth" x="762" y="910" width="275" height="72" rx="18"/>
+  <text class="text" x="900" y="936">Збереження</text>
+  <text class="text" x="900" y="959">JWT-токена</text>
+
+  <rect class="action" x="762" y="1030" width="275" height="72" rx="18"/>
+  <text class="text" x="900" y="1056">Перехід до</text>
+  <text class="text" x="900" y="1079">головної сторінки</text>
+
+  <!-- Backend lane -->
+  <rect class="auth" x="1290" y="650" width="275" height="72" rx="18"/>
+  <text class="text" x="1428" y="676">Створення</text>
+  <text class="text" x="1428" y="699">облікового запису</text>
+
+  <rect class="auth" x="1290" y="790" width="275" height="72" rx="18"/>
+  <text class="text" x="1428" y="816">Перевірка даних</text>
+  <text class="text" x="1428" y="839">користувача</text>
+
+  <rect class="auth" x="1290" y="910" width="275" height="72" rx="18"/>
+  <text class="text" x="1428" y="936">Генерація</text>
+  <text class="text" x="1428" y="959">JWT-токена</text>
+
+  <!-- Main task process, below lanes -->
+  <rect class="task" x="185" y="1115" width="250" height="72" rx="18"/>
+  <text class="text" x="310" y="1141">Додавання</text>
+  <text class="text" x="310" y="1164">списку задач</text>
+
+  <rect class="task" x="500" y="1115" width="250" height="72" rx="18"/>
+  <text class="text" x="625" y="1141">Створення</text>
+  <text class="text" x="625" y="1164">картки</text>
+
+  <rect class="task" x="815" y="1115" width="300" height="72" rx="18"/>
+  <text class="text" x="965" y="1133">Заповнення опису, статусу,</text>
+  <text class="text" x="965" y="1155">пріоритету і дати виконання</text>
+  <text class="text" x="965" y="1176">картки</text>
+
+  <polygon class="decision" points="1270,1090 1415,1151 1270,1212 1125,1151"/>
+  <text class="text" x="1270" y="1151">Подальша дія?</text>
+
+  <rect class="extra" x="1435" y="1065" width="250" height="72" rx="18"/>
+  <text class="text" x="1560" y="1091">Додати коментарі</text>
+  <text class="text" x="1560" y="1114">або активність</text>
+
+  <rect class="extra" x="1435" y="1165" width="250" height="72" rx="18"/>
+  <text class="text" x="1560" y="1191">Архівування</text>
+  <text class="text" x="1560" y="1214">виконаної задачі</text>
+
+  <circle class="end-outer" cx="1710" cy="1151" r="19"/>
+  <circle class="end-inner" cx="1710" cy="1151" r="10"/>
+
+  <!-- Flows inside lanes -->
+  <line class="flow" x1="372" y1="295" x2="372" y2="325"/>
+  <line class="flow" x1="510" y1="361" x2="762" y2="361"/>
+  <line class="flow" x1="900" y1="397" x2="900" y2="430"/>
+  <polyline class="flow" points="900,430 372,430 372,445"/>
+
+  <line class="flow" x1="372" y1="595" x2="372" y2="650"/>
+  <text class="small" x="405" y="626">ні</text>
+  <line class="flow" x1="510" y1="686" x2="1290" y2="686"/>
+  <polyline class="flow" points="1428,722 1428,755 372,755 372,790"/>
+
+  <polyline class="flow" points="500,520 900,520 900,790"/>
+  <text class="small" x="535" y="502">так</text>
+
+  <line class="flow" x1="510" y1="826" x2="762" y2="826"/>
+  <line class="flow" x1="1037" y1="826" x2="1290" y2="826"/>
+  <line class="flow" x1="1428" y1="862" x2="1428" y2="910"/>
+  <line class="flow" x1="1290" y1="946" x2="1037" y2="946"/>
+  <line class="flow" x1="900" y1="982" x2="900" y2="1030"/>
+  <polyline class="flow" points="762,1066 372,1066 372,1012"/>
+
+  <!-- Main process flows -->
+  <polyline class="flow" points="372,1012 372,1085 310,1085 310,1115"/>
+  <line class="flow" x1="435" y1="1151" x2="500" y2="1151"/>
+  <line class="flow" x1="750" y1="1151" x2="815" y2="1151"/>
+  <line class="flow" x1="1115" y1="1151" x2="1125" y2="1151"/>
+  <line class="flow-light" x1="1415" y1="1151" x2="1435" y2="1101"/>
+  <text class="small" x="1434" y="1080">коментарі / активність</text>
+  <line class="flow-light" x1="1415" y1="1151" x2="1435" y2="1201"/>
+  <text class="small" x="1438" y="1239">архівування</text>
+  <polyline class="flow" points="1685,1101 1705,1101 1705,1132"/>
+  <polyline class="flow" points="1685,1201 1705,1201 1705,1170"/>
+
+  <!-- Legend -->
+  <rect class="legend" x="95" y="1110" width="35" height="35" rx="8"/>
+  <text class="note" x="95" y="1088">Примітка: JWT-токен використовується frontend-частиною для захищених запитів до API.</text>
+
+  <rect class="legend" x="95" y="1212" width="615" height="44" rx="12"/>
+  <circle cx="125" cy="1234" r="9" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+  <text class="legend-text" x="143" y="1234">авторизація</text>
+  <circle cx="285" cy="1234" r="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text class="legend-text" x="303" y="1234">робота із задачами</text>
+  <circle cx="515" cy="1234" r="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text class="legend-text" x="533" y="1234">додаткові дії</text>
+</svg>

@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1050" viewBox="0 0 1600 1050">
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .system { fill: #ffffff; stroke: #2563eb; stroke-width: 3; }
+      .title { font: 700 28px Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .actor-label { font: 700 20px Arial, sans-serif; fill: #0f172a; text-anchor: middle; }
+      .actor-line { stroke: #0f172a; stroke-width: 3; stroke-linecap: round; fill: none; }
+      .case { fill: #eff6ff; stroke: #2563eb; stroke-width: 2; }
+      .case-profile { fill: #ecfdf5; stroke: #16a34a; stroke-width: 2; }
+      .case-board { fill: #fefce8; stroke: #ca8a04; stroke-width: 2; }
+      .case-task { fill: #fff7ed; stroke: #ea580c; stroke-width: 2; }
+      .case-ai { fill: #f5f3ff; stroke: #7c3aed; stroke-width: 2; }
+      .case-text { font: 600 15px Arial, sans-serif; fill: #1e293b; text-anchor: middle; dominant-baseline: middle; }
+      .line { stroke: #475569; stroke-width: 2; fill: none; }
+      .dash { stroke: #64748b; stroke-width: 2; stroke-dasharray: 8 6; fill: none; }
+      .include { font: 600 14px Arial, sans-serif; fill: #475569; text-anchor: middle; }
+      .legend-text { font: 500 14px Arial, sans-serif; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="1050"/>
+
+  <rect class="system" x="250" y="55" width="1100" height="930" rx="18"/>
+  <text class="title" x="800" y="95">Система управління завданнями з покращеним відображенням прогресу</text>
+
+  <!-- Actor: User -->
+  <g transform="translate(85 430)">
+    <circle class="actor-line" cx="65" cy="25" r="20"/>
+    <line class="actor-line" x1="65" y1="45" x2="65" y2="110"/>
+    <line class="actor-line" x1="25" y1="70" x2="105" y2="70"/>
+    <line class="actor-line" x1="65" y1="110" x2="25" y2="165"/>
+    <line class="actor-line" x1="65" y1="110" x2="105" y2="165"/>
+    <text class="actor-label" x="65" y="205">Користувач</text>
+  </g>
+
+  <!-- Actor: AI service -->
+  <g transform="translate(1390 720)">
+    <circle class="actor-line" cx="65" cy="25" r="20"/>
+    <line class="actor-line" x1="65" y1="45" x2="65" y2="110"/>
+    <line class="actor-line" x1="25" y1="70" x2="105" y2="70"/>
+    <line class="actor-line" x1="65" y1="110" x2="25" y2="165"/>
+    <line class="actor-line" x1="65" y1="110" x2="105" y2="165"/>
+    <text class="actor-label" x="65" y="205">AI-сервіс</text>
+  </g>
+
+  <!-- Profile and auth -->
+  <ellipse class="case-profile" cx="430" cy="165" rx="125" ry="39"/>
+  <text class="case-text" x="430" y="165">Реєстрація користувача</text>
+
+  <ellipse class="case-profile" cx="430" cy="255" rx="125" ry="39"/>
+  <text class="case-text" x="430" y="255">Вхід у систему</text>
+
+  <ellipse class="case-profile" cx="430" cy="345" rx="125" ry="39"/>
+  <text class="case-text" x="430" y="345">Перегляд профілю</text>
+
+  <ellipse class="case-profile" cx="430" cy="435" rx="125" ry="39"/>
+  <text class="case-text" x="430" y="425">Редагування даних</text>
+  <text class="case-text" x="430" y="446">профілю</text>
+
+  <!-- Boards -->
+  <ellipse class="case-board" cx="725" cy="165" rx="125" ry="39"/>
+  <text class="case-text" x="725" y="165">Створення дошки</text>
+
+  <ellipse class="case-board" cx="725" cy="255" rx="125" ry="39"/>
+  <text class="case-text" x="725" y="255">Перегляд дошок</text>
+
+  <ellipse class="case-board" cx="725" cy="345" rx="125" ry="39"/>
+  <text class="case-text" x="725" y="345">Редагування дошки</text>
+
+  <ellipse class="case-board" cx="725" cy="435" rx="125" ry="39"/>
+  <text class="case-text" x="725" y="435">Архівування дошки</text>
+
+  <ellipse class="case-board" cx="725" cy="525" rx="125" ry="39"/>
+  <text class="case-text" x="725" y="515">Додавання</text>
+  <text class="case-text" x="725" y="536">співучасника</text>
+
+  <!-- Lists and cards -->
+  <ellipse class="case-task" cx="1030" cy="165" rx="128" ry="39"/>
+  <text class="case-text" x="1030" y="155">Створення списку</text>
+  <text class="case-text" x="1030" y="176">на дошці</text>
+
+  <ellipse class="case-task" cx="1030" cy="255" rx="128" ry="39"/>
+  <text class="case-text" x="1030" y="255">Редагування списку</text>
+
+  <ellipse class="case-task" cx="1030" cy="345" rx="128" ry="39"/>
+  <text class="case-text" x="1030" y="345">Архівування списку</text>
+
+  <ellipse class="case-task" cx="1030" cy="435" rx="128" ry="39"/>
+  <text class="case-text" x="1030" y="435">Створення картки</text>
+
+  <ellipse class="case-task" cx="1030" cy="525" rx="128" ry="39"/>
+  <text class="case-text" x="1030" y="525">Редагування картки</text>
+
+  <ellipse class="case-task" cx="1030" cy="615" rx="128" ry="39"/>
+  <text class="case-text" x="1030" y="605">Переміщення картки</text>
+  <text class="case-text" x="1030" y="626">між списками</text>
+
+  <ellipse class="case-task" cx="1030" cy="705" rx="128" ry="39"/>
+  <text class="case-text" x="1030" y="705">Архівування картки</text>
+
+  <!-- Additional functions -->
+  <ellipse class="case" cx="570" cy="710" rx="130" ry="39"/>
+  <text class="case-text" x="570" y="710">Додавання коментаря</text>
+
+  <ellipse class="case" cx="570" cy="800" rx="130" ry="39"/>
+  <text class="case-text" x="570" y="790">Перегляд історії</text>
+  <text class="case-text" x="570" y="811">активності</text>
+
+  <ellipse class="case" cx="570" cy="890" rx="130" ry="39"/>
+  <text class="case-text" x="570" y="880">Пошук і фільтрація</text>
+  <text class="case-text" x="570" y="901">задач</text>
+
+  <ellipse class="case-ai" cx="895" cy="800" rx="130" ry="39"/>
+  <text class="case-text" x="895" y="800">Взаємодія з AI-чатом</text>
+
+  <ellipse class="case-ai" cx="1185" cy="800" rx="130" ry="39"/>
+  <text class="case-text" x="1185" y="790">Отримання відповіді</text>
+  <text class="case-text" x="1185" y="811">від AI-сервісу</text>
+
+  <!-- Lines from user -->
+  <line class="line" x1="190" y1="525" x2="305" y2="165"/>
+  <line class="line" x1="190" y1="525" x2="305" y2="255"/>
+  <line class="line" x1="190" y1="525" x2="305" y2="345"/>
+  <line class="line" x1="190" y1="525" x2="305" y2="435"/>
+
+  <line class="line" x1="190" y1="525" x2="600" y2="165"/>
+  <line class="line" x1="190" y1="525" x2="600" y2="255"/>
+  <line class="line" x1="190" y1="525" x2="600" y2="345"/>
+  <line class="line" x1="190" y1="525" x2="600" y2="435"/>
+  <line class="line" x1="190" y1="525" x2="600" y2="525"/>
+
+  <line class="line" x1="190" y1="525" x2="902" y2="165"/>
+  <line class="line" x1="190" y1="525" x2="902" y2="255"/>
+  <line class="line" x1="190" y1="525" x2="902" y2="345"/>
+  <line class="line" x1="190" y1="525" x2="902" y2="435"/>
+  <line class="line" x1="190" y1="525" x2="902" y2="525"/>
+  <line class="line" x1="190" y1="525" x2="902" y2="615"/>
+  <line class="line" x1="190" y1="525" x2="902" y2="705"/>
+
+  <line class="line" x1="190" y1="525" x2="440" y2="710"/>
+  <line class="line" x1="190" y1="525" x2="440" y2="800"/>
+  <line class="line" x1="190" y1="525" x2="440" y2="890"/>
+  <line class="line" x1="190" y1="525" x2="765" y2="800"/>
+
+  <!-- AI relation -->
+  <line class="dash" x1="1025" y1="800" x2="1055" y2="800"/>
+  <text class="include" x="1040" y="775">&lt;&lt;include&gt;&gt;</text>
+  <line class="line" x1="1390" y1="815" x2="1315" y2="800"/>
+
+  <!-- Legend -->
+  <rect x="340" y="930" width="850" height="38" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <circle cx="375" cy="949" r="9" fill="#ecfdf5" stroke="#16a34a" stroke-width="2"/>
+  <text class="legend-text" x="392" y="954">профіль і доступ</text>
+  <circle cx="565" cy="949" r="9" fill="#fefce8" stroke="#ca8a04" stroke-width="2"/>
+  <text class="legend-text" x="582" y="954">дошки</text>
+  <circle cx="690" cy="949" r="9" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+  <text class="legend-text" x="707" y="954">списки й картки</text>
+  <circle cx="890" cy="949" r="9" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text class="legend-text" x="907" y="954">додаткові функції</text>
+  <circle cx="1100" cy="949" r="9" fill="#f5f3ff" stroke="#7c3aed" stroke-width="2"/>
+  <text class="legend-text" x="1117" y="954">AI</text>
+</svg>
